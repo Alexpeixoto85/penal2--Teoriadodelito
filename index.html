@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Direito Penal • Esquema mobile</title>
+    <title>Direito Penal • Esquema + Quiz mobile</title>
     <style>
         * {
             margin: 0;
@@ -84,9 +84,6 @@
             align-items: center;
             gap: 8px;
         }
-        .topic i {
-            font-size: 1.3rem;
-        }
         .subtopic {
             margin-left: 12px;
             padding-left: 16px;
@@ -142,7 +139,6 @@
             color: #2c3e50;
             border: 1px solid #cfd8dc;
         }
-        /* mapa mental simples */
         .mindmap {
             background: #f9f3e9;
             border-radius: 48px 48px 24px 24px;
@@ -236,6 +232,133 @@
             font-size: 0.9rem;
             color: #5d4037;
             text-align: center;
+        }
+
+        /* ESTILOS DO QUIZ */
+        .quiz-container {
+            background: #1e2b3a;
+            border-radius: 40px;
+            padding: 24px 18px;
+            margin: 32px 0 20px;
+            color: white;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .quiz-pergunta-num {
+            background: #ffb74d;
+            color: #1e2b3a;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+        }
+        .quiz-progress {
+            background: #2f4052;
+            height: 10px;
+            border-radius: 10px;
+            width: 100%;
+            margin: 10px 0 20px;
+        }
+        .quiz-progress-fill {
+            height: 10px;
+            background: #ffb74d;
+            border-radius: 10px;
+            width: 10%;
+            transition: width 0.3s;
+        }
+        .pergunta-texto {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 30px 0 25px;
+            line-height: 1.3;
+        }
+        .alternativas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 25px 0;
+        }
+        .alternativa {
+            background: #2f4052;
+            border-radius: 50px;
+            padding: 16px 22px;
+            border: 2px solid transparent;
+            transition: 0.2s;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .alternativa.selecionada {
+            background: #ffb74d;
+            color: #1e2b3a;
+            border-color: #ffffff;
+            font-weight: 700;
+        }
+        .alternativa:active {
+            transform: scale(0.98);
+        }
+        .quiz-navigation {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        .quiz-btn {
+            background: #ffb74d;
+            border: none;
+            color: #1e2b3a;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 16px 0;
+            border-radius: 60px;
+            flex: 1;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 6px 0 #b26a2e;
+            transition: 0.1s;
+        }
+        .quiz-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #b26a2e;
+        }
+        .quiz-btn.secundario {
+            background: #b0bec5;
+            box-shadow: 0 6px 0 #7e8c9c;
+            color: #1e2b3a;
+        }
+        .resultado-final {
+            background: #0f2a35;
+            border-radius: 40px;
+            padding: 28px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .resultado-acertos {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #ffb74d;
+            line-height: 1;
+        }
+        .resultado-texto {
+            font-size: 1.3rem;
+            margin: 15px 0;
+        }
+        .reiniciar {
+            background: #ffb74d;
+            border: none;
+            border-radius: 60px;
+            padding: 18px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            width: 100%;
+            margin-top: 25px;
+            cursor: pointer;
+        }
+        .escondido {
+            display: none;
         }
     </style>
 </head>
@@ -408,11 +531,204 @@
         </ul>
     </div>
 
-    <!-- RODAPÉ ESQUEMÁTICO -->
+    <!-- ========== QUIZ DE 10 PERGUNTAS ========== -->
+    <div class="quiz-container" id="quizContainer">
+        <div class="quiz-header">
+            <span class="quiz-pergunta-num" id="perguntaNum">1/10</span>
+            <span>📋 Quiz Penal</span>
+        </div>
+        <div class="quiz-progress">
+            <div class="quiz-progress-fill" id="progressFill" style="width:10%"></div>
+        </div>
+        <div id="perguntaTexto" class="pergunta-texto">Carregando...</div>
+        <div id="alternativasContainer" class="alternativas"></div>
+        <div class="quiz-navigation">
+            <button class="quiz-btn secundario" id="btnAnterior" disabled>◀ Anterior</button>
+            <button class="quiz-btn" id="btnProximo">Próximo ▶</button>
+        </div>
+        <button class="quiz-btn" id="btnFinalizar" style="display: none;">Finalizar e ver resultado</button>
+    </div>
+
+    <!-- RESULTADO FINAL (invisível) -->
+    <div id="resultadoFinal" class="resultado-final escondido">
+        <div class="resultado-acertos" id="acertosNum">0</div>
+        <div class="resultado-texto" id="acertosTexto">de 10 acertos</div>
+        <div style="font-size:2rem; font-weight:600;" id="percentual">0%</div>
+        <button class="reiniciar" id="reiniciarQuiz">↻ Refazer quiz</button>
+    </div>
+
     <hr>
     <div style="text-align: center; color: #455a64; font-size:0.85rem;">
         ⚡ organizado com base nas anotações de aula – mobile friendly ⚡
     </div>
 </div>
+
+<script>
+    // 10 perguntas sobre Direito Penal (baseadas no conteúdo das imagens)
+    const perguntas = [
+        {
+            pergunta: "1. Qual dos elementos NÃO faz parte do fato típico?",
+            opcoes: ["Conduta", "Resultado", "Nexo Causal", "Culpabilidade"],
+            resposta: 3 // índice 0 = Conduta, 1=Resultado, 2=Nexo, 3=Culpabilidade (culpabilidade não integra fato típico)
+        },
+        {
+            pergunta: "2. Maria, com intenção de matar, dispara contra João, que morre. Isso é exemplo de:",
+            opcoes: ["Crime culposo", "Dolo direto", "Crime impossível", "Estado de necessidade"],
+            resposta: 1
+        },
+        {
+            pergunta: "3. Qual das situações abaixo é causa de exclusão da ilicitude?",
+            opcoes: ["Menoridade", "Legítima defesa", "Doença mental", "Erro de proibição"],
+            resposta: 1
+        },
+        {
+            pergunta: "4. A culpabilidade exige, como elemento:",
+            opcoes: ["Imputabilidade, dolo e tipicidade", "Imputabilidade, potencial consciência e exigibilidade de conduta diversa", "Resultado, nexo causal e tipicidade", "Conduta, resultado e dolo"],
+            resposta: 1
+        },
+        {
+            pergunta: "5. Um motorista atropela um pedestre porque o celular caiu no chão do carro e ele se distraiu. Trata-se de:",
+            opcoes: ["Dolo eventual", "Culpa consciente", "Culpa inconsciente (negligência)", "Caso fortuito"],
+            resposta: 2 // culpa inconsciente (imprudência/negligência)
+        },
+        {
+            pergunta: "6. Segundo a teoria adotada pelo Código Penal brasileiro (finalista), o dolo e a culpa situam-se:",
+            opcoes: ["Na culpabilidade", "No fato típico", "Na ilicitude", "Na punibilidade"],
+            resposta: 1
+        },
+        {
+            pergunta: "7. A pena de prestação de serviços à comunidade é uma espécie de pena:",
+            opcoes: ["Privativa de liberdade", "Restritiva de direitos", "De multa", "Acessória"],
+            resposta: 1
+        },
+        {
+            pergunta: "8. No crime de furto (exemplo: furtar um celular), o bem jurídico protegido é:",
+            opcoes: ["A vida", "A integridade física", "O patrimônio", "A honra"],
+            resposta: 2
+        },
+        {
+            pergunta: "9. O nexo causal é a relação entre:",
+            opcoes: ["A conduta e o resultado", "O dolo e a culpa", "A pena e o crime", "A tipicidade e a ilicitude"],
+            resposta: 0
+        },
+        {
+            pergunta: "10. A sigla 'GA 20 ANOS' mencionada na aula pode se referir a:",
+            opcoes: ["Gravíssima ameaça com pena de 20 anos", "Garantias processuais de 20 anos", "Prazo prescricional máximo de 20 anos", "Idade mínima para imputabilidade"],
+            resposta: 2 // interpretação: prazo prescricional
+        }
+    ];
+
+    // Variáveis de estado
+    let perguntaAtual = 0;
+    const respostasUsuario = new Array(perguntas.length).fill(null); // null = não respondida
+
+    // Elementos DOM
+    const perguntaNumEl = document.getElementById('perguntaNum');
+    const progressFill = document.getElementById('progressFill');
+    const perguntaTextoEl = document.getElementById('perguntaTexto');
+    const alternativasContainer = document.getElementById('alternativasContainer');
+    const btnAnterior = document.getElementById('btnAnterior');
+    const btnProximo = document.getElementById('btnProximo');
+    const btnFinalizar = document.getElementById('btnFinalizar');
+    const quizContainer = document.getElementById('quizContainer');
+    const resultadoFinalDiv = document.getElementById('resultadoFinal');
+    const acertosNum = document.getElementById('acertosNum');
+    const acertosTexto = document.getElementById('acertosTexto');
+    const percentualEl = document.getElementById('percentual');
+    const reiniciarBtn = document.getElementById('reiniciarQuiz');
+
+    function atualizarInterface() {
+        // Atualiza número e barra de progresso
+        perguntaNumEl.innerText = `${perguntaAtual+1}/${perguntas.length}`;
+        const progresso = ((perguntaAtual+1) / perguntas.length) * 100;
+        progressFill.style.width = `${progresso}%`;
+
+        // Carrega pergunta
+        const p = perguntas[perguntaAtual];
+        perguntaTextoEl.innerText = p.pergunta;
+
+        // Monta alternativas
+        let html = '';
+        p.opcoes.forEach((opcao, idx) => {
+            const selecionada = (respostasUsuario[perguntaAtual] === idx) ? 'selecionada' : '';
+            html += `<div class="alternativa ${selecionada}" data-index="${idx}">${opcao}</div>`;
+        });
+        alternativasContainer.innerHTML = html;
+
+        // Adiciona evento de clique nas alternativas
+        document.querySelectorAll('.alternativa').forEach(alt => {
+            alt.addEventListener('click', function(e) {
+                const idx = parseInt(this.dataset.index);
+                // Marcar resposta
+                respostasUsuario[perguntaAtual] = idx;
+                // Remove seleção das outras e adiciona nesta
+                document.querySelectorAll('.alternativa').forEach(a => a.classList.remove('selecionada'));
+                this.classList.add('selecionada');
+            });
+        });
+
+        // Habilita/desabilita botões de navegação
+        btnAnterior.disabled = (perguntaAtual === 0);
+        // Mostra botão finalizar apenas na última pergunta
+        if (perguntaAtual === perguntas.length - 1) {
+            btnProximo.style.display = 'none';
+            btnFinalizar.style.display = 'block';
+        } else {
+            btnProximo.style.display = 'block';
+            btnFinalizar.style.display = 'none';
+        }
+    }
+
+    function irParaProxima() {
+        if (perguntaAtual < perguntas.length - 1) {
+            perguntaAtual++;
+            atualizarInterface();
+        }
+    }
+
+    function irParaAnterior() {
+        if (perguntaAtual > 0) {
+            perguntaAtual--;
+            atualizarInterface();
+        }
+    }
+
+    function finalizarQuiz() {
+        // Calcula acertos
+        let acertos = 0;
+        for (let i = 0; i < perguntas.length; i++) {
+            if (respostasUsuario[i] === perguntas[i].resposta) {
+                acertos++;
+            }
+        }
+        const percentual = ((acertos / perguntas.length) * 100).toFixed(1);
+        acertosNum.innerText = acertos;
+        acertosTexto.innerText = `de ${perguntas.length} acertos`;
+        percentualEl.innerText = `${percentual}%`;
+
+        // Esconde quiz, mostra resultado
+        quizContainer.classList.add('escondido');
+        resultadoFinalDiv.classList.remove('escondido');
+    }
+
+    function reiniciarQuiz() {
+        perguntaAtual = 0;
+        // Limpa respostas
+        for (let i = 0; i < perguntas.length; i++) respostasUsuario[i] = null;
+        // Mostra quiz, esconde resultado
+        quizContainer.classList.remove('escondido');
+        resultadoFinalDiv.classList.add('escondido');
+        atualizarInterface();
+    }
+
+    // Event listeners
+    btnProximo.addEventListener('click', irParaProxima);
+    btnAnterior.addEventListener('click', irParaAnterior);
+    btnFinalizar.addEventListener('click', finalizarQuiz);
+    reiniciarBtn.addEventListener('click', reiniciarQuiz);
+
+    // Inicializa
+    atualizarInterface();
+</script>
 </body>
 </html>

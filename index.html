@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Direito Penal • Esquema mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: #f0f2f5;
+            padding: 16px 12px 32px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #0b2b40;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+            border-left: 8px solid #b71c1c;
+            padding-left: 16px;
+            background: linear-gradient(to right, #ffffff80, transparent);
+            border-radius: 0 8px 8px 0;
+        }
+        .sub {
+            font-size: 1rem;
+            color: #2c3e50;
+            margin-bottom: 24px;
+            background: #e9edf2;
+            padding: 12px 16px;
+            border-radius: 24px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 20px 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03);
+            border: 1px solid #ffffff50;
+            transition: 0.2s;
+        }
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0b2b40;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            border-bottom: 3px solid #ffe0b2;
+            padding-bottom: 12px;
+        }
+        .card-title span {
+            background: #b71c1c;
+            color: white;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+        }
+        .topic {
+            margin: 16px 0 12px 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #1e4a6d;
+            background: #f4f9ff;
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .topic i {
+            font-size: 1.3rem;
+        }
+        .subtopic {
+            margin-left: 12px;
+            padding-left: 16px;
+            border-left: 4px solid #ffb74d;
+            margin-bottom: 18px;
+        }
+        .subtopic strong {
+            font-size: 1.1rem;
+            color: #bf360c;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .exemplo {
+            background: #f1f8e9;
+            padding: 14px 16px;
+            border-radius: 24px;
+            margin: 16px 0 8px;
+            font-size: 0.95rem;
+            border-left: 6px solid #2e7d32;
+            color: #1e3a2e;
+        }
+        .exemplo::before {
+            content: "📌 Exemplo do dia a dia: ";
+            font-weight: 600;
+            color: #1b5e20;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .badge {
+            background: #e1f5fe;
+            border-radius: 50px;
+            padding: 5px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #01579b;
+            display: inline-block;
+            margin: 5px 5px 0 0;
+        }
+        .grid-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        .grid-mini > div {
+            background: #eceff1;
+            flex: 1 1 auto;
+            min-width: 110px;
+            padding: 14px 8px;
+            text-align: center;
+            border-radius: 32px;
+            font-weight: 500;
+            color: #2c3e50;
+            border: 1px solid #cfd8dc;
+        }
+        /* mapa mental simples */
+        .mindmap {
+            background: #f9f3e9;
+            border-radius: 48px 48px 24px 24px;
+            padding: 22px 16px;
+            margin: 24px 0 10px;
+            border: 2px dashed #bc8f4b;
+        }
+        .mindmap-node {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: #795548;
+            color: white;
+            padding: 16px 8px;
+            border-radius: 60px;
+            max-width: 85%;
+            margin: 0 auto 20px;
+            box-shadow: 0 6px 0 #4e342e;
+        }
+        .mindmap-branches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+        }
+        .branch {
+            background: #fff3e0;
+            border-radius: 40px;
+            padding: 14px 10px;
+            flex: 1 1 140px;
+            text-align: center;
+            font-weight: 600;
+            color: #3e2723;
+            border: 2px solid #ffb74d;
+            box-shadow: 0 3px 0 #e65100;
+        }
+        .branch ul {
+            text-align: left;
+            margin-top: 12px;
+            list-style-type: none;
+            font-weight: 400;
+            font-size: 0.85rem;
+            padding-left: 8px;
+        }
+        .branch li {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px dotted #ffe0b2;
+            padding-bottom: 5px;
+        }
+        .sigla-card {
+            background: #e8eaf6;
+            border-radius: 24px;
+            padding: 18px;
+            margin-top: 24px;
+        }
+        .sigla-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .sigla-item {
+            background: white;
+            border-radius: 24px;
+            padding: 12px 10px;
+            text-align: center;
+            font-weight: 600;
+            color: #1a237e;
+            box-shadow: 0 2px 6px #bdbdbd;
+        }
+        .sigla-item small {
+            display: block;
+            font-weight: 400;
+            color: #424242;
+            font-size: 0.7rem;
+            margin-top: 5px;
+        }
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b0bec5, transparent);
+            margin: 24px 0;
+        }
+        .footnote {
+            background: #ffecb3;
+            padding: 14px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #5d4037;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>⚖️ Direito Penal</h1>
+    <div class="sub">📱 aula esquematizada + exemplos</div>
+
+    <!-- CARD 1 - TEORIA DO DELITO -->
+    <div class="card">
+        <div class="card-title"><span>①</span> Teoria do Delito</div>
+        <div class="topic">🔹 Fato Típico</div>
+        <div class="subtopic">
+            <strong>Elementos:</strong> Conduta · Resultado · Nexo Causal · Tipicidade
+            <div class="grid-mini">
+                <div>🎯 dolo</div>
+                <div>⚠️ culpa</div>
+            </div>
+            <div class="exemplo">
+                João empurra Maria ➜ ela cai e se machuca. <br>➔ Conduta (empurrar) + resultado (lesão) + nexo causal (empurrão causou a queda). Típico? Sim, lesão corporal (art. 129 CP).
+            </div>
+        </div>
+
+        <div class="topic">⚡ Tipo Subjetivo</div>
+        <div class="subtopic">
+            <strong>Dolo:</strong> intenção. <strong>Culpa:</strong> imprudência, negligência, imperícia.
+            <div class="exemplo">
+                <strong>Dolo:</strong> motorista avança o sinal vermelho porque está com pressa e atropela alguém (quis assumir o risco).<br>
+                <strong>Culpa:</strong> motorista derruba café no colo, tira os olhos do trânsito e bate no carro da frente.
+            </div>
+        </div>
+
+        <div class="topic">🛡️ Ilicitude (antijuridicidade)</div>
+        <div class="subtopic">
+            <span class="badge">legítima defesa</span> <span class="badge">estado de necessidade</span> <span class="badge">estrito cumprimento</span> <span class="badge">exercício regular</span>
+            <div class="exemplo">
+                Maria agride um homem que tentava estuprá-la ➔ legítima defesa (exclui a ilicitude).<br>
+                Um bombeiro arromba a porta de uma casa para apagar incêndio ➔ estado de necessidade.
+            </div>
+        </div>
+
+        <div class="topic">🧠 Culpabilidade</div>
+        <div class="subtopic">
+            <strong>Imputabilidade + potencial consciência + exigibilidade</strong>
+            <div class="exemplo">
+                Um menor de 18 anos comete crime ➔ inimputável (não há culpabilidade).<br>
+                Um motorista é obrigado sob ameaça de morte a dirigir em alta velocidade ➔ inexigibilidade de conduta diversa.
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 2 - TEORIA DA PENA -->
+    <div class="card">
+        <div class="card-title"><span>②</span> Teoria da Pena</div>
+        <div class="topic">🎯 Finalidades</div>
+        <div class="grid-mini">
+            <div>⚖️ Retributiva</div>
+            <div>🚫 Preventiva</div>
+            <div>🔄 Ressocializadora</div>
+        </div>
+        <div class="topic">📦 Espécies de pena (CP)</div>
+        <div class="subtopic">
+            • Privativas de liberdade (reclusão/detenção)<br>
+            • Restritivas de direitos (prestação de serviço, limitação de fim de semana, etc.)<br>
+            • Multa
+            <div class="exemplo">
+                José condenado por furto simples: pena de 1 ano em regime aberto ➔ pode ser convertida em prestação de serviços à comunidade (restritiva de direitos).
+            </div>
+        </div>
+        <div class="topic">🔐 Regimes iniciais</div>
+        <div class="grid-mini">
+            <div>🔒 fechado</div>
+            <div>🔓 semiaberto</div>
+            <div>📴 aberto</div>
+        </div>
+        <div><span class="badge">CP</span> <span class="badge">LEP 7.210/84</span> <span class="badge">Lei 8.072/90</span> <span class="badge">Lei 11.343/06</span></div>
+    </div>
+
+    <!-- CARD 3 - TEORIAS CONCORRENTES E NEXO CAUSAL -->
+    <div class="card">
+        <div class="card-title"><span>③</span> Teorias & Nexo Causal</div>
+        <div class="topic">🧪 Teoria finalista (adotada)</div>
+        <div>Dolo/culpa no fato típico, não na culpabilidade.</div>
+        <div class="topic">📜 Teoria clássica (causalista)</div>
+        <div>Dolo/culpa na culpabilidade (modelo antigo).</div>
+        <div class="topic">🔗 Nexo Causal</div>
+        <div class="exemplo">
+            "A" dispara contra "B", que morre baleado. O disparo é causa da morte (relação física). Se "B" morre em um acidente de ambulância, o nexo é interrompido.
+        </div>
+        <div class="topic">➕ Cumulatividade / não cumulatividade</div>
+        <div class="grid-mini">
+            <div>📈 Cumulativa: soma de penas</div>
+            <div>📉 Não cumulativa: substituição</div>
+        </div>
+        <div class="exemplo">
+            Furto + receptação = penas somadas (cumulativa).<br>
+            Pena privativa de liberdade substituída por restritiva de direitos (não cumulativa).
+        </div>
+    </div>
+
+    <!-- MAPA MENTAL SIMPLES -->
+    <div class="mindmap">
+        <div class="mindmap-node">🧠 MAPA MENTAL<br>DIREITO PENAL</div>
+        <div class="mindmap-branches">
+            <div class="branch">🔸 FATO TÍPICO
+                <ul>
+                    <li>👤 Conduta (dolo/culpa)</li>
+                    <li>📉 Resultado</li>
+                    <li>⛓️ Nexo causal</li>
+                    <li>📄 Tipicidade</li>
+                </ul>
+            </div>
+            <div class="branch">🛡️ ILICITUDE
+                <ul>
+                    <li>⚔️ Legítima defesa</li>
+                    <li>🔥 Estado necessidade</li>
+                    <li>👮 Dever legal</li>
+                    <li>📋 Exercício regular</li>
+                </ul>
+            </div>
+            <div class="branch">⚖️ CULPABILIDADE
+                <ul>
+                    <li>🧠 Imputabilidade</li>
+                    <li>💭 Potencial consciência</li>
+                    <li>🔄 Exigibilidade</li>
+                </ul>
+            </div>
+            <div class="branch">⛓️ NEXO CAUSAL
+                <ul>
+                    <li>🔗 Teoria da equivalência</li>
+                    <li>🚑 Causa direta</li>
+                </ul>
+            </div>
+            <div class="branch">📏 PENA
+                <ul>
+                    <li>🔒 Privativa</li>
+                    <li>🔄 Restritiva</li>
+                    <li>💰 Multa</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD 4 - SIGLAS E ABREVIAÇÕES (com interpretação) -->
+    <div class="sigla-card">
+        <div style="font-size:1.5rem; font-weight:600; margin-bottom:10px;">📇 Siglas da aula</div>
+        <div class="sigla-grid">
+            <div class="sigla-item">LOP <small>Lei Orgânica da Polícia / Organização Penitenciária</small></div>
+            <div class="sigla-item">LOR <small>Lei de Organização Judiciária / Regimes</small></div>
+            <div class="sigla-item">COMU <small>Crimes comuns / Cumulação</small></div>
+            <div class="sigla-item">C.P.C. <small>Código de Processo Penal</small></div>
+            <div class="sigla-item">L.O.V.D. <small>Lei de Crimes Violentos / Varas de Delitos</small></div>
+            <div class="sigla-item">SEGURIDADE <small>Crimes contra seguridade social</small></div>
+            <div class="sigla-item">POS EMES <small>Pós‑emenda (alteração legislativa)</small></div>
+            <div class="sigla-item">GA 20 ANOS <small>Gravíssima ameaça / prazo prescricional de 20 anos</small></div>
+        </div>
+        <div class="footnote" style="margin-top:20px;">
+            ⏳ GA 20 ANOS: pode indicar prazo máximo de prescrição ou “grande acontecimento” com relevância penal.
+        </div>
+    </div>
+
+    <!-- EXEMPLOS ADICIONAIS COTIDIANOS -->
+    <div class="card" style="background:#fff9c4;">
+        <div class="card-title"><span>📌</span> Exemplos do cotidiano</div>
+        <ul style="list-style:none; padding-left:6px;">
+            <li style="margin:16px 0;">📱 <strong>Fato típico:</strong> furar a catraca do ônibus (furto – art. 155).</li>
+            <li style="margin:16px 0;">🚗 <strong>Culpa:</strong> bater o carro por falar no celular (lesão corporal culposa).</li>
+            <li style="margin:16px 0;">🏠 <strong>Ilicitude:</strong> quebrar a janela do vizinho para salvar uma criança presa (estado de necessidade).</li>
+            <li style="margin:16px 0;">💰 <strong>Pena:</strong> condenado a pagar cesta básica (restritiva de direitos).</li>
+        </ul>
+    </div>
+
+    <!-- RODAPÉ ESQUEMÁTICO -->
+    <hr>
+    <div style="text-align: center; color: #455a64; font-size:0.85rem;">
+        ⚡ organizado com base nas anotações de aula – mobile friendly ⚡
+    </div>
+</div>
+</body>
+</html>

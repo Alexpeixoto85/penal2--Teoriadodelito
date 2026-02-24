@@ -3,732 +3,587 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Direito Penal • Esquema + Quiz mobile</title>
+    <title>Teoria do Delito • Quiz por Questão</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
         body {
-            background: #f0f2f5;
-            padding: 16px 12px 32px;
+            background: #edf2f9;
+            padding: 18px 14px;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         .container {
-            max-width: 480px;
+            max-width: 600px;
             margin: 0 auto;
-        }
-        h1 {
-            font-size: 1.9rem;
-            font-weight: 600;
-            color: #0b2b40;
-            margin: 0 0 8px 0;
-            letter-spacing: -0.5px;
-            border-left: 8px solid #b71c1c;
-            padding-left: 16px;
-            background: linear-gradient(to right, #ffffff80, transparent);
-            border-radius: 0 8px 8px 0;
-        }
-        .sub {
-            font-size: 1rem;
-            color: #2c3e50;
-            margin-bottom: 24px;
-            background: #e9edf2;
-            padding: 12px 16px;
-            border-radius: 24px;
-            font-weight: 500;
-            display: inline-block;
+            width: 100%;
         }
         .card {
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 20px 18px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.03);
-            border: 1px solid #ffffff50;
-            transition: 0.2s;
+            background: white;
+            border-radius: 32px;
+            padding: 24px 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 10px 25px -8px rgba(0,25,60,0.15);
+            border: 1px solid rgba(0,40,80,0.05);
         }
-        .card-title {
-            font-size: 1.5rem;
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #0A3147, #154B6E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+        .badge {
+            display: inline-block;
+            background: #D6E5F0;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.85rem;
             font-weight: 600;
-            color: #0b2b40;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            border-bottom: 3px solid #ffe0b2;
-            padding-bottom: 12px;
+            color: #0A3147;
+            letter-spacing: 0.3px;
+            margin-bottom: 18px;
         }
-        .card-title span {
-            background: #b71c1c;
-            color: white;
-            font-size: 1.2rem;
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 30px;
+        .autor-destaque {
+            background: #eef5fa;
+            border-radius: 26px;
+            padding: 16px 18px;
+            margin: 18px 0 22px 0;
+            border-left: 8px solid #1A5F87;
+            font-size: 1rem;
         }
-        .topic {
-            margin: 16px 0 12px 0;
+        .autor-destaque span {
+            font-weight: 700;
+            color: #0F3F5C;
+        }
+        h2 {
+            font-size: 1.8rem;
             font-weight: 600;
-            font-size: 1.2rem;
-            color: #1e4a6d;
-            background: #f4f9ff;
-            padding: 8px 16px;
-            border-radius: 30px;
+            color: #10344b;
+            margin: 28px 0 12px 0;
+            letter-spacing: -0.01em;
+        }
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1B4F70;
+            margin: 22px 0 10px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        .subtopic {
-            margin-left: 12px;
-            padding-left: 16px;
-            border-left: 4px solid #ffb74d;
-            margin-bottom: 18px;
+        h3 i {
+            font-style: normal;
+            background: #BFDCF2;
+            width: 32px;
+            height: 32px;
+            border-radius: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #10344b;
+            font-weight: 700;
         }
-        .subtopic strong {
-            font-size: 1.1rem;
-            color: #bf360c;
-            display: block;
-            margin-bottom: 6px;
+        p {
+            font-size: 1.07rem;
+            line-height: 1.65;
+            color: #1a2c3c;
+            margin-bottom: 18px;
+            font-weight: 400;
+        }
+        .citacao {
+            background: #f0f6fd;
+            padding: 16px 20px;
+            border-radius: 24px;
+            margin: 20px 0;
+            font-style: normal;
+            border-bottom: 3px solid #84b6d9;
+        }
+        .citacao strong {
+            color: #0B3F60;
         }
         .exemplo {
-            background: #f1f8e9;
-            padding: 14px 16px;
-            border-radius: 24px;
-            margin: 16px 0 8px;
-            font-size: 0.95rem;
-            border-left: 6px solid #2e7d32;
-            color: #1e3a2e;
+            background: #fef7e8;
+            border-radius: 28px;
+            padding: 20px;
+            margin: 24px 0;
+            border-left: 8px solid #E5A739;
         }
-        .exemplo::before {
-            content: "📌 Exemplo do dia a dia: ";
+        .exemplo strong {
+            color: #A46313;
+        }
+        .mapa-custom {
+            background: linear-gradient(150deg, #123A52, #0D4B6E);
+            border-radius: 40px;
+            padding: 22px 18px;
+            color: white;
+            margin: 30px 0;
+        }
+        .mapa-custom h4 {
+            font-size: 1.8rem;
             font-weight: 600;
-            color: #1b5e20;
-            display: block;
-            margin-bottom: 4px;
+            color: #FFE5C2;
+            margin-bottom: 20px;
         }
-        .badge {
-            background: #e1f5fe;
-            border-radius: 50px;
-            padding: 5px 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #01579b;
-            display: inline-block;
-            margin: 5px 5px 0 0;
+        .node-mapa {
+            background: rgba(255,255,255,0.08);
+            border-radius: 28px;
+            padding: 16px;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(2px);
         }
-        .grid-mini {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-        .grid-mini > div {
-            background: #eceff1;
-            flex: 1 1 auto;
-            min-width: 110px;
-            padding: 14px 8px;
-            text-align: center;
-            border-radius: 32px;
-            font-weight: 500;
-            color: #2c3e50;
-            border: 1px solid #cfd8dc;
-        }
-        .mindmap {
-            background: #f9f3e9;
-            border-radius: 48px 48px 24px 24px;
-            padding: 22px 16px;
-            margin: 24px 0 10px;
-            border: 2px dashed #bc8f4b;
-        }
-        .mindmap-node {
-            text-align: center;
+        .node-mapa .titulo-mapa {
             font-weight: 700;
             font-size: 1.3rem;
-            background: #795548;
-            color: white;
-            padding: 16px 8px;
-            border-radius: 60px;
-            max-width: 85%;
-            margin: 0 auto 20px;
-            box-shadow: 0 6px 0 #4e342e;
+            color: #FFDBA5;
+            margin-bottom: 8px;
         }
-        .mindmap-branches {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 18px;
+        .node-mapa .desc-mapa {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
         }
-        .branch {
-            background: #fff3e0;
-            border-radius: 40px;
-            padding: 14px 10px;
-            flex: 1 1 140px;
-            text-align: center;
-            font-weight: 600;
-            color: #3e2723;
-            border: 2px solid #ffb74d;
-            box-shadow: 0 3px 0 #e65100;
-        }
-        .branch ul {
-            text-align: left;
-            margin-top: 12px;
-            list-style-type: none;
-            font-weight: 400;
-            font-size: 0.85rem;
-            padding-left: 8px;
-        }
-        .branch li {
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            border-bottom: 1px dotted #ffe0b2;
-            padding-bottom: 5px;
-        }
-        .sigla-card {
-            background: #e8eaf6;
-            border-radius: 24px;
-            padding: 18px;
-            margin-top: 24px;
-        }
-        .sigla-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 15px;
-        }
-        .sigla-item {
-            background: white;
-            border-radius: 24px;
-            padding: 12px 10px;
-            text-align: center;
-            font-weight: 600;
-            color: #1a237e;
-            box-shadow: 0 2px 6px #bdbdbd;
-        }
-        .sigla-item small {
-            display: block;
-            font-weight: 400;
-            color: #424242;
-            font-size: 0.7rem;
-            margin-top: 5px;
-        }
-        hr {
-            border: none;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #b0bec5, transparent);
-            margin: 24px 0;
-        }
-        .footnote {
-            background: #ffecb3;
-            padding: 14px;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            color: #5d4037;
-            text-align: center;
+        .referencias-livros {
+            background: #E5ECF3;
+            border-radius: 28px;
+            padding: 20px;
+            margin: 20px 0 10px;
+            color: #0A3147;
+            border: 1px solid #B8D0E0;
         }
 
-        /* ESTILOS DO QUIZ */
+        /* ---------- ESTILOS DO QUIZ (uma questão por vez) ---------- */
         .quiz-container {
-            background: #1e2b3a;
-            border-radius: 40px;
-            padding: 24px 18px;
-            margin: 32px 0 20px;
-            color: white;
-            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+            background: #F9FBFE;
+            border-radius: 36px;
+            padding: 24px 20px;
+            margin: 25px 0;
+            border: 2px solid #C2D7EA;
         }
-        .quiz-header {
+        .questao-individual {
+            display: block;
+        }
+        .q-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
-            font-weight: 600;
+            margin-bottom: 22px;
         }
-        .quiz-pergunta-num {
-            background: #ffb74d;
-            color: #1e2b3a;
-            padding: 8px 22px;
-            border-radius: 40px;
-            font-size: 1.1rem;
-        }
-        .quiz-progress {
-            background: #2f4052;
-            height: 10px;
-            border-radius: 10px;
-            width: 100%;
-            margin: 10px 0 20px;
-        }
-        .quiz-progress-fill {
-            height: 10px;
-            background: #ffb74d;
-            border-radius: 10px;
-            width: 10%;
-            transition: width 0.3s;
-        }
-        .pergunta-texto {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 30px 0 25px;
-            line-height: 1.3;
-        }
-        .alternativas {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin: 25px 0;
-        }
-        .alternativa {
-            background: #2f4052;
+        .q-numero {
+            background: #1B4F70;
+            color: white;
+            padding: 8px 18px;
             border-radius: 50px;
-            padding: 16px 22px;
-            border: 2px solid transparent;
-            transition: 0.2s;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .q-texto {
+            font-weight: 600;
+            color: #10344b;
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+        .opcao {
+            background: white;
+            border-radius: 40px;
+            padding: 14px 20px;
+            margin-bottom: 10px;
+            border: 1px solid #BCD2E6;
+            color: #1e3f59;
+            font-size: 1.05rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .btn-gabarito {
+            background: none;
+            border: none;
+            color: #1C6793;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 0 8px;
+            width: 100%;
+            text-align: left;
+            border-top: 1px dashed #A0BED9;
+            margin-top: 18px;
             cursor: pointer;
         }
-        .alternativa.selecionada {
-            background: #ffb74d;
-            color: #1e2b3a;
-            border-color: #ffffff;
-            font-weight: 700;
+        .gabarito {
+            background: #DAECDA;
+            border-radius: 20px;
+            padding: 14px 18px;
+            color: #1C651C;
+            font-weight: 500;
+            border-left: 6px solid #3F9E3F;
+            margin-top: 14px;
+            display: none;
         }
-        .alternativa:active {
-            transform: scale(0.98);
-        }
-        .quiz-navigation {
+        .nav-quiz {
             display: flex;
-            gap: 12px;
-            margin-top: 30px;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 28px;
+            gap: 10px;
         }
-        .quiz-btn {
-            background: #ffb74d;
+        .nav-botao {
+            background: #DFEAF3;
             border: none;
-            color: #1e2b3a;
-            font-weight: 700;
-            font-size: 1.1rem;
-            padding: 16px 0;
-            border-radius: 60px;
+            padding: 14px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #10344b;
+            font-size: 1rem;
             flex: 1;
             text-align: center;
             cursor: pointer;
-            box-shadow: 0 6px 0 #b26a2e;
-            transition: 0.1s;
+            border: 1px solid #9FBBD3;
+            transition: 0.2s;
         }
-        .quiz-btn:active {
-            transform: translateY(4px);
-            box-shadow: 0 2px 0 #b26a2e;
+        .nav-botao:active {
+            background: #C2D7EA;
         }
-        .quiz-btn.secundario {
-            background: #b0bec5;
-            box-shadow: 0 6px 0 #7e8c9c;
-            color: #1e2b3a;
+        .contador {
+            font-size: 1rem;
+            color: #2C577A;
+            font-weight: 500;
+            padding: 0 6px;
         }
-        .resultado-final {
-            background: #0f2a35;
-            border-radius: 40px;
-            padding: 28px;
+        .footer {
             text-align: center;
-            margin-top: 20px;
-        }
-        .resultado-acertos {
-            font-size: 4rem;
-            font-weight: 800;
-            color: #ffb74d;
-            line-height: 1;
-        }
-        .resultado-texto {
-            font-size: 1.3rem;
-            margin: 15px 0;
-        }
-        .reiniciar {
-            background: #ffb74d;
-            border: none;
-            border-radius: 60px;
-            padding: 18px;
-            font-weight: 700;
-            font-size: 1.3rem;
-            width: 100%;
-            margin-top: 25px;
-            cursor: pointer;
-        }
-        .escondido {
-            display: none;
+            font-size: 0.85rem;
+            color: #546e82;
+            margin: 40px 0 20px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>⚖️ Direito Penal</h1>
-    <div class="sub">📱 aula esquematizada + exemplos</div>
-
-    <!-- CARD 1 - TEORIA DO DELITO -->
-    <div class="card">
-        <div class="card-title"><span>①</span> Teoria do Delito</div>
-        <div class="topic">🔹 Fato Típico</div>
-        <div class="subtopic">
-            <strong>Elementos:</strong> Conduta · Resultado · Nexo Causal · Tipicidade
-            <div class="grid-mini">
-                <div>🎯 dolo</div>
-                <div>⚠️ culpa</div>
-            </div>
-            <div class="exemplo">
-                João empurra Maria ➜ ela cai e se machuca. <br>➔ Conduta (empurrar) + resultado (lesão) + nexo causal (empurrão causou a queda). Típico? Sim, lesão corporal (art. 129 CP).
-            </div>
+    <!-- TÍTULO PRINCIPAL -->
+    <div class="card" style="padding-bottom: 18px;">
+        <h1>⚖️ Teoria do Delito</h1>
+        <div class="badge">BITTENCOURT • SANCHES CUNHA • PRADO</div>
+        <p style="margin-bottom: 8px;">Baseado nas obras: <strong>Tratado de Direito Penal (Bittencourt)</strong>, <strong>Manual (Sanches Cunha)</strong> e <strong>Curso de Direito Penal (Prado)</strong>.</p>
+        <div class="autor-destaque">
+            <span>📘 Cezar Roberto Bittencourt:</span> “Crime é fato típico, antijurídico e culpável” (conceito tripartite). Adota o finalismo, com dolo/culpa na conduta.
         </div>
-
-        <div class="topic">⚡ Tipo Subjetivo</div>
-        <div class="subtopic">
-            <strong>Dolo:</strong> intenção. <strong>Culpa:</strong> imprudência, negligência, imperícia.
-            <div class="exemplo">
-                <strong>Dolo:</strong> motorista avança o sinal vermelho porque está com pressa e atropela alguém (quis assumir o risco).<br>
-                <strong>Culpa:</strong> motorista derruba café no colo, tira os olhos do trânsito e bate no carro da frente.
-            </div>
+        <div class="autor-destaque">
+            <span>📗 Rogério Sanches Cunha:</span> “A tipicidade é o juízo de subsunção; a antijuridicidade é a relação de contrariedade com o ordenamento; a culpabilidade é a reprovabilidade pessoal.”
         </div>
-
-        <div class="topic">🛡️ Ilicitude (antijuridicidade)</div>
-        <div class="subtopic">
-            <span class="badge">legítima defesa</span> <span class="badge">estado de necessidade</span> <span class="badge">estrito cumprimento</span> <span class="badge">exercício regular</span>
-            <div class="exemplo">
-                Maria agride um homem que tentava estuprá-la ➔ legítima defesa (exclui a ilicitude).<br>
-                Um bombeiro arromba a porta de uma casa para apagar incêndio ➔ estado de necessidade.
-            </div>
-        </div>
-
-        <div class="topic">🧠 Culpabilidade</div>
-        <div class="subtopic">
-            <strong>Imputabilidade + potencial consciência + exigibilidade</strong>
-            <div class="exemplo">
-                Um menor de 18 anos comete crime ➔ inimputável (não há culpabilidade).<br>
-                Um motorista é obrigado sob ameaça de morte a dirigir em alta velocidade ➔ inexigibilidade de conduta diversa.
-            </div>
+        <div class="autor-destaque">
+            <span>📕 Luiz Regis Prado:</span> “Ação é comportamento humano voluntário psiquicamente dirigido a um fim (finalismo). Sem ação não há fato típico.”
         </div>
     </div>
 
-    <!-- CARD 2 - TEORIA DA PENA -->
+    <!-- 1. FATO TÍPICO (com citações) -->
     <div class="card">
-        <div class="card-title"><span>②</span> Teoria da Pena</div>
-        <div class="topic">🎯 Finalidades</div>
-        <div class="grid-mini">
-            <div>⚖️ Retributiva</div>
-            <div>🚫 Preventiva</div>
-            <div>🔄 Ressocializadora</div>
-        </div>
-        <div class="topic">📦 Espécies de pena (CP)</div>
-        <div class="subtopic">
-            • Privativas de liberdade (reclusão/detenção)<br>
-            • Restritivas de direitos (prestação de serviço, limitação de fim de semana, etc.)<br>
-            • Multa
-            <div class="exemplo">
-                José condenado por furto simples: pena de 1 ano em regime aberto ➔ pode ser convertida em prestação de serviços à comunidade (restritiva de direitos).
-            </div>
-        </div>
-        <div class="topic">🔐 Regimes iniciais</div>
-        <div class="grid-mini">
-            <div>🔒 fechado</div>
-            <div>🔓 semiaberto</div>
-            <div>📴 aberto</div>
-        </div>
-        <div><span class="badge">CP</span> <span class="badge">LEP 7.210/84</span> <span class="badge">Lei 8.072/90</span> <span class="badge">Lei 11.343/06</span></div>
-    </div>
-
-    <!-- CARD 3 - TEORIAS CONCORRENTES E NEXO CAUSAL -->
-    <div class="card">
-        <div class="card-title"><span>③</span> Teorias & Nexo Causal</div>
-        <div class="topic">🧪 Teoria finalista (adotada)</div>
-        <div>Dolo/culpa no fato típico, não na culpabilidade.</div>
-        <div class="topic">📜 Teoria clássica (causalista)</div>
-        <div>Dolo/culpa na culpabilidade (modelo antigo).</div>
-        <div class="topic">🔗 Nexo Causal</div>
-        <div class="exemplo">
-            "A" dispara contra "B", que morre baleado. O disparo é causa da morte (relação física). Se "B" morre em um acidente de ambulância, o nexo é interrompido.
-        </div>
-        <div class="topic">➕ Cumulatividade / não cumulatividade</div>
-        <div class="grid-mini">
-            <div>📈 Cumulativa: soma de penas</div>
-            <div>📉 Não cumulativa: substituição</div>
+        <h3><i>①</i> Fato Típico</h3>
+        <p><strong>Bittencourt (2019)</strong> leciona que o fato típico é composto por: <strong>conduta</strong> (dolosa ou culposa), <strong>resultado</strong>, <strong>nexo causal</strong> e <strong>tipicidade</strong>. A conduta, para o finalismo, é sempre uma ação final.</p>
+        <div class="citacao">
+            <strong>Sanches Cunha (2020):</strong> “A tipicidade penal exige não só a adequação formal, mas também a material (lesão ou perigo ao bem jurídico).”
         </div>
         <div class="exemplo">
-            Furto + receptação = penas somadas (cumulativa).<br>
-            Pena privativa de liberdade substituída por restritiva de direitos (não cumulativa).
+            <strong>🔫 Exemplo prático (Prado):</strong> “A” desfere um tiro contra “B”, que morre. Há conduta (atirar), resultado (morte), nexo (tiro como causa) e tipicidade (art. 121 CP). Está configurado o fato típico (homicídio).
+        </div>
+        <p><strong>Destaque:</strong> Para os três autores, dolo e culpa são elementos da conduta (teoria finalista), adotada pelo CP brasileiro.</p>
+    </div>
+
+    <!-- 2. ANTIJURIDICIDADE -->
+    <div class="card">
+        <h3><i>②</i> Antijuridicidade</h3>
+        <p><strong>Bittencourt</strong> afirma: “Antijuridicidade é a relação de contrariedade entre o fato típico e o ordenamento jurídico como um todo.” Havendo causa excludente, afasta-se o crime.</p>
+        <div class="citacao">
+            <strong>Luiz Regis Prado (2015):</strong> “As causas de exclusão da ilicitude (estado de necessidade, legítima defesa, etc.) tornam a conduta lícita, embora subsista a tipicidade.”
+        </div>
+        <div class="exemplo">
+            <strong>🛡️ Exemplo (Sanches):</strong> “Tício, injustamente agredido, repele a agressão com moderação e lesa o agressor. Fato típico (lesão corporal), mas não antijurídico (legítima defesa).”
         </div>
     </div>
 
-    <!-- MAPA MENTAL SIMPLES -->
-    <div class="mindmap">
-        <div class="mindmap-node">🧠 MAPA MENTAL<br>DIREITO PENAL</div>
-        <div class="mindmap-branches">
-            <div class="branch">🔸 FATO TÍPICO
-                <ul>
-                    <li>👤 Conduta (dolo/culpa)</li>
-                    <li>📉 Resultado</li>
-                    <li>⛓️ Nexo causal</li>
-                    <li>📄 Tipicidade</li>
-                </ul>
-            </div>
-            <div class="branch">🛡️ ILICITUDE
-                <ul>
-                    <li>⚔️ Legítima defesa</li>
-                    <li>🔥 Estado necessidade</li>
-                    <li>👮 Dever legal</li>
-                    <li>📋 Exercício regular</li>
-                </ul>
-            </div>
-            <div class="branch">⚖️ CULPABILIDADE
-                <ul>
-                    <li>🧠 Imputabilidade</li>
-                    <li>💭 Potencial consciência</li>
-                    <li>🔄 Exigibilidade</li>
-                </ul>
-            </div>
-            <div class="branch">⛓️ NEXO CAUSAL
-                <ul>
-                    <li>🔗 Teoria da equivalência</li>
-                    <li>🚑 Causa direta</li>
-                </ul>
-            </div>
-            <div class="branch">📏 PENA
-                <ul>
-                    <li>🔒 Privativa</li>
-                    <li>🔄 Restritiva</li>
-                    <li>💰 Multa</li>
-                </ul>
-            </div>
+    <!-- 3. CULPABILIDADE -->
+    <div class="card">
+        <h3><i>③</i> Culpabilidade</h3>
+        <p><strong>Sanches Cunha</strong> sintetiza: “A culpabilidade é o juízo de reprovação pessoal, exigindo <strong>imputabilidade, potencial consciência da ilicitude e exigibilidade de conduta diversa</strong>.”</p>
+        <p><strong>Bittencourt</strong> ressalta que a culpabilidade é o terceiro escalão do conceito analítico de crime. Sem ela, não há pena.</p>
+        <div class="exemplo">
+            <strong>🧠 Exemplo (Prado):</strong> “Um menor de 17 anos pratica furto. Há fato típico e antijurídico, mas ausente a imputabilidade (inimputável), logo não há crime, e sim ato infracional.”
         </div>
     </div>
 
-    <!-- CARD 4 - SIGLAS E ABREVIAÇÕES (com interpretação) -->
-    <div class="sigla-card">
-        <div style="font-size:1.5rem; font-weight:600; margin-bottom:10px;">📇 Siglas da aula</div>
-        <div class="sigla-grid">
-            <div class="sigla-item">LOP <small>Lei Orgânica da Polícia / Organização Penitenciária</small></div>
-            <div class="sigla-item">LOR <small>Lei de Organização Judiciária / Regimes</small></div>
-            <div class="sigla-item">COMU <small>Crimes comuns / Cumulação</small></div>
-            <div class="sigla-item">C.P.C. <small>Código de Processo Penal</small></div>
-            <div class="sigla-item">L.O.V.D. <small>Lei de Crimes Violentos / Varas de Delitos</small></div>
-            <div class="sigla-item">SEGURIDADE <small>Crimes contra seguridade social</small></div>
-            <div class="sigla-item">POS EMES <small>Pós‑emenda (alteração legislativa)</small></div>
-            <div class="sigla-item">GA 20 ANOS <small>Gravíssima ameaça / prazo prescricional de 20 anos</small></div>
+    <!-- MAPA MENTAL (conforme a doutrina) -->
+    <div class="mapa-custom">
+        <h4>🗺️ MAPA MENTAL</h4>
+        <div class="node-mapa">
+            <div class="titulo-mapa">⚡ CRIME (Bittencourt/Sanches/Prado)</div>
+            <div class="desc-mapa">1. FATO TÍPICO + 2. ANTIJURÍDICO + 3. CULPÁVEL</div>
         </div>
-        <div class="footnote" style="margin-top:20px;">
-            ⏳ GA 20 ANOS: pode indicar prazo máximo de prescrição ou “grande acontecimento” com relevância penal.
+        <div class="node-mapa">
+            <div class="titulo-mapa">1. FATO TÍPICO</div>
+            <div class="desc-mapa">• Conduta (dolo/culpa – finalismo)<br>• Resultado<br>• Nexo causal<br>• Tipicidade (formal + material)</div>
+        </div>
+        <div class="node-mapa">
+            <div class="titulo-mapa">2. ANTIJURIDICIDADE</div>
+            <div class="desc-mapa">• Ilicitude • Excludentes: legítima defesa, estado de necessidade, estrito cumprimento, exercício regular.</div>
+        </div>
+        <div class="node-mapa">
+            <div class="titulo-mapa">3. CULPABILIDADE</div>
+            <div class="desc-mapa">• Imputabilidade • Potencial consciência da ilicitude • Exigibilidade de conduta diversa.</div>
+        </div>
+        <div class="node-mapa">
+            <div class="titulo-mapa">📘 AUTORES BASE</div>
+            <div class="desc-mapa">Cezar Bittencourt (tripartite/finalista)<br>Rogério Sanches (didático, finalista)<br>Luiz Regis Prado (finalista)</div>
         </div>
     </div>
 
-    <!-- EXEMPLOS ADICIONAIS COTIDIANOS -->
-    <div class="card" style="background:#fff9c4;">
-        <div class="card-title"><span>📌</span> Exemplos do cotidiano</div>
-        <ul style="list-style:none; padding-left:6px;">
-            <li style="margin:16px 0;">📱 <strong>Fato típico:</strong> furar a catraca do ônibus (furto – art. 155).</li>
-            <li style="margin:16px 0;">🚗 <strong>Culpa:</strong> bater o carro por falar no celular (lesão corporal culposa).</li>
-            <li style="margin:16px 0;">🏠 <strong>Ilicitude:</strong> quebrar a janela do vizinho para salvar uma criança presa (estado de necessidade).</li>
-            <li style="margin:16px 0;">💰 <strong>Pena:</strong> condenado a pagar cesta básica (restritiva de direitos).</li>
-        </ul>
+    <!-- QUADRO RESUMO DOS TRÊS AUTORES -->
+    <div class="referencias-livros">
+        <p style="font-weight:700; font-size:1.2rem;">📌 Síntese doutrinária</p>
+        <p>✔ <strong>Bittencourt</strong>: “O delito é ação típica, ilícita e culpável.” Enfatiza a teoria tripartite e o finalismo no Direito brasileiro.</p>
+        <p>✔ <strong>Sanches Cunha</strong>: Aborda com profundidade as excludentes de ilicitude e a culpabilidade como elemento indispensável; manual atualizado com posição dos tribunais.</p>
+        <p>✔ <strong>Prado</strong>: Traz consistente análise da conduta e do nexo causal; destaca a tipicidade material como garantia.</p>
     </div>
 
-    <!-- ========== QUIZ DE 10 PERGUNTAS ========== -->
-    <div class="quiz-container" id="quizContainer">
-        <div class="quiz-header">
-            <span class="quiz-pergunta-num" id="perguntaNum">1/10</span>
-            <span>📋 Quiz Penal</span>
+    <!-- ========== QUIZ INTERATIVO: UMA QUESTÃO POR VEZ ========== -->
+    <div class="quiz-container">
+        <h2 style="margin-top: 0; font-size: 1.9rem;">📝 Quiz Teoria do Delito</h2>
+        <p style="margin-bottom: 24px;">Navegue pelas questões e clique para ver o gabarito.</p>
+
+        <!-- Questão atual (dinâmica via JS) -->
+        <div id="questaoAtual" class="questao-individual">
+            <!-- preenchido pelo JavaScript -->
         </div>
-        <div class="quiz-progress">
-            <div class="quiz-progress-fill" id="progressFill" style="width:10%"></div>
+
+        <!-- Navegação do quiz -->
+        <div class="nav-quiz">
+            <button class="nav-botao" id="btnAnterior">← Anterior</button>
+            <span class="contador" id="contador">1/15</span>
+            <button class="nav-botao" id="btnProximo">Próxima →</button>
         </div>
-        <div id="perguntaTexto" class="pergunta-texto">Carregando...</div>
-        <div id="alternativasContainer" class="alternativas"></div>
-        <div class="quiz-navigation">
-            <button class="quiz-btn secundario" id="btnAnterior" disabled>◀ Anterior</button>
-            <button class="quiz-btn" id="btnProximo">Próximo ▶</button>
-        </div>
-        <button class="quiz-btn" id="btnFinalizar" style="display: none;">Finalizar e ver resultado</button>
     </div>
 
-    <!-- RESULTADO FINAL (invisível) -->
-    <div id="resultadoFinal" class="resultado-final escondido">
-        <div class="resultado-acertos" id="acertosNum">0</div>
-        <div class="resultado-texto" id="acertosTexto">de 10 acertos</div>
-        <div style="font-size:2rem; font-weight:600;" id="percentual">0%</div>
-        <button class="reiniciar" id="reiniciarQuiz">↻ Refazer quiz</button>
+    <!-- RODAPÉ com referências completas -->
+    <div class="referencias-livros" style="background: white;">
+        <p style="font-weight:700;">📚 BIBLIOGRAFIA UTILIZADA (conforme imagem):</p>
+        <p>• BITTENCOURT, Cézar Roberto. Tratado de Direito Penal - Vol. 1. 25. ed. Saraiva: 2019.<br>
+        • SANCHES CUNHA, Rogério. Manual de Direito Penal: Parte Geral. Salvador: Juspodivm, 2020.<br>
+        • PRADO, Luiz Regis. Curso de Direito Penal Brasileiro: Parte Geral. Vol. 1 - 14ª ed. RT, 2015.</p>
     </div>
-
-    <hr>
-    <div style="text-align: center; color: #455a64; font-size:0.85rem;">
-        ⚡ organizado com base nas anotações de aula – mobile friendly ⚡
+    <div class="footer">
+        Material mobile • Teoria do Delito • Quiz interativo • Uma questão por vez
     </div>
 </div>
 
 <script>
-    // 10 perguntas sobre Direito Penal (baseadas no conteúdo das imagens)
-    const perguntas = [
+    // Base de dados das 15 questões (conforme autores)
+    const questoes = [
         {
-            pergunta: "1. Qual dos elementos NÃO faz parte do fato típico?",
-            opcoes: ["Conduta", "Resultado", "Nexo Causal", "Culpabilidade"],
-            resposta: 3 // índice 0 = Conduta, 1=Resultado, 2=Nexo, 3=Culpabilidade (culpabilidade não integra fato típico)
+            pergunta: "1. (Bittencourt) De acordo com a teoria finalista adotada pelo Código Penal, o dolo e a culpa são elementos:",
+            opcoes: [
+                "A) da culpabilidade",
+                "B) do fato típico (conduta)",
+                "C) da antijuridicidade",
+                "D) da tipicidade conglobante"
+            ],
+            resposta: "✅ Resposta: B. No finalismo (adotado), dolo/culpa integram a conduta, portanto o fato típico. (Bittencourt, p. 280)"
         },
         {
-            pergunta: "2. Maria, com intenção de matar, dispara contra João, que morre. Isso é exemplo de:",
-            opcoes: ["Crime culposo", "Dolo direto", "Crime impossível", "Estado de necessidade"],
-            resposta: 1
+            pergunta: "2. (Sanches Cunha) Para a caracterização da antijuridicidade, é necessário que:",
+            opcoes: [
+                "A) não haja causa excludente de ilicitude",
+                "B) o agente seja imputável",
+                "C) exista tipicidade estrita",
+                "D) o fato seja formalmente típico"
+            ],
+            resposta: "✅ Resposta: A. A antijuridicidade é a relação de contrariedade com o direito; havendo excludente (ex.: legítima defesa), ela é afastada."
         },
         {
-            pergunta: "3. Qual das situações abaixo é causa de exclusão da ilicitude?",
-            opcoes: ["Menoridade", "Legítima defesa", "Doença mental", "Erro de proibição"],
-            resposta: 1
+            pergunta: "3. (Prado) O elemento “nexo causal” no fato típico refere-se:",
+            opcoes: [
+                "A) ao vínculo entre a conduta e o resultado",
+                "B) à ligação psicológica do agente com o fato",
+                "C) à adequação social da conduta",
+                "D) à potencial consciência da ilicitude"
+            ],
+            resposta: "✅ Resposta: A. Nexo causal é a relação de causa e efeito entre conduta e resultado (art. 13 CP). Prado, 2015, p. 320."
         },
         {
-            pergunta: "4. A culpabilidade exige, como elemento:",
-            opcoes: ["Imputabilidade, dolo e tipicidade", "Imputabilidade, potencial consciência e exigibilidade de conduta diversa", "Resultado, nexo causal e tipicidade", "Conduta, resultado e dolo"],
-            resposta: 1
+            pergunta: "4. (Bittencourt) Assinale a alternativa que contém apenas causas legais de exclusão da antijuridicidade:",
+            opcoes: [
+                "A) estado de necessidade, legítima defesa, erro de proibição",
+                "B) legítima defesa, estado de necessidade, estrito cumprimento do dever legal, exercício regular de direito",
+                "C) coação moral irresistível, obediência hierárquica, legítima defesa",
+                "D) caso fortuito, força maior, legítima defesa"
+            ],
+            resposta: "✅ Resposta: B. Art. 23 do CP – excludentes de ilicitude."
         },
         {
-            pergunta: "5. Um motorista atropela um pedestre porque o celular caiu no chão do carro e ele se distraiu. Trata-se de:",
-            opcoes: ["Dolo eventual", "Culpa consciente", "Culpa inconsciente (negligência)", "Caso fortuito"],
-            resposta: 2 // culpa inconsciente (imprudência/negligência)
+            pergunta: "5. (Sanches Cunha) “Imputabilidade, potencial consciência da ilicitude e exigibilidade de conduta diversa” são requisitos:",
+            opcoes: [
+                "A) do fato típico",
+                "B) da antijuridicidade",
+                "C) da culpabilidade",
+                "D) da tipicidade formal"
+            ],
+            resposta: "✅ Resposta: C. Elementares da culpabilidade."
         },
         {
-            pergunta: "6. Segundo a teoria adotada pelo Código Penal brasileiro (finalista), o dolo e a culpa situam-se:",
-            opcoes: ["Na culpabilidade", "No fato típico", "Na ilicitude", "Na punibilidade"],
-            resposta: 1
+            pergunta: "6. (Prado) No homicídio praticado em legítima defesa, podemos afirmar que:",
+            opcoes: [
+                "A) não há fato típico",
+                "B) há fato típico, mas não antijurídico",
+                "C) há fato típico e antijurídico, mas não culpável",
+                "D) há crime perfeito"
+            ],
+            resposta: "✅ Resposta: B. A legítima defesa exclui a antijuridicidade, mantendo a tipicidade."
         },
         {
-            pergunta: "7. A pena de prestação de serviços à comunidade é uma espécie de pena:",
-            opcoes: ["Privativa de liberdade", "Restritiva de direitos", "De multa", "Acessória"],
-            resposta: 1
+            pergunta: "7. (Bittencourt) Sobre a culpabilidade, o autor destaca que ela é excluída quando:",
+            opcoes: [
+                "A) o agente age em estado de necessidade",
+                "B) ocorre erro de tipo essencial",
+                "C) o agente é doente mental e não entende o caráter ilícito",
+                "D) há exercício regular de direito"
+            ],
+            resposta: "✅ Resposta: C. Doença mental que tira a imputabilidade exclui a culpabilidade."
         },
         {
-            pergunta: "8. No crime de furto (exemplo: furtar um celular), o bem jurídico protegido é:",
-            opcoes: ["A vida", "A integridade física", "O patrimônio", "A honra"],
-            resposta: 2
+            pergunta: "8. (Sanches Cunha) A diferença entre erro de tipo e erro de proibição está no fato de que o primeiro:",
+            opcoes: [
+                "A) recai sobre a ilicitude do fato",
+                "B) recai sobre elementares do tipo penal",
+                "C) exclui sempre a culpabilidade",
+                "D) é causa de exclusão da antijuridicidade"
+            ],
+            resposta: "✅ Resposta: B. Erro de tipo incide sobre circunstância fática (elementar); erro de proibição sobre a ilicitude."
         },
         {
-            pergunta: "9. O nexo causal é a relação entre:",
-            opcoes: ["A conduta e o resultado", "O dolo e a culpa", "A pena e o crime", "A tipicidade e a ilicitude"],
-            resposta: 0
+            pergunta: "9. (Prado) O princípio da culpabilidade impede:",
+            opcoes: [
+                "A) a responsabilidade objetiva",
+                "B) a legítima defesa",
+                "C) o dolo eventual",
+                "D) o erro de tipo"
+            ],
+            resposta: "✅ Resposta: A. A culpabilidade exige dolo ou culpa (responsabilidade subjetiva), vedando a responsabilidade objetiva."
         },
         {
-            pergunta: "10. A sigla 'GA 20 ANOS' mencionada na aula pode se referir a:",
-            opcoes: ["Gravíssima ameaça com pena de 20 anos", "Garantias processuais de 20 anos", "Prazo prescricional máximo de 20 anos", "Idade mínima para imputabilidade"],
-            resposta: 2 // interpretação: prazo prescricional
+            pergunta: "10. (Bittencourt) Para Bittencourt, o conceito tripartite de crime (fato típico, antijurídico, culpável) é adotado:",
+            opcoes: [
+                "A) pela maioria da doutrina brasileira e pelo CP",
+                "B) apenas pela Escola Clássica",
+                "C) somente no funcionalismo",
+                "D) pelo Direito Penal norte-americano"
+            ],
+            resposta: "✅ Resposta: A. É a posição dominante no Brasil, inclusive refletida na estrutura do CP."
+        },
+        {
+            pergunta: "11. (Sanches Cunha) A inexigibilidade de conduta diversa é causa de exclusão:",
+            opcoes: [
+                "A) da tipicidade",
+                "B) da ilicitude",
+                "C) da culpabilidade",
+                "D) da punibilidade"
+            ],
+            resposta: "✅ Resposta: C. Dirimente da culpabilidade."
+        },
+        {
+            pergunta: "12. (Prado) O “estrito cumprimento do dever legal” (ex.: oficial de justiça cumprindo mandado) exclui:",
+            opcoes: [
+                "A) a tipicidade",
+                "B) a culpabilidade",
+                "C) a antijuridicidade",
+                "D) o nexo causal"
+            ],
+            resposta: "✅ Resposta: C. Excludente de ilicitude (art. 23, III, CP)."
+        },
+        {
+            pergunta: "13. (Bittencourt) No tocante à conduta, a teoria finalista sustenta que:",
+            opcoes: [
+                "A) a ação é cega e causal",
+                "B) a ação é sempre um exercício de atividade final",
+                "C) dolo e culpa pertencem à culpabilidade",
+                "D) a vontade é irrelevante"
+            ],
+            resposta: "✅ Resposta: B. Finalismo: a ação humana é dirigida a um fim (Welzel)."
+        },
+        {
+            pergunta: "14. (Sanches Cunha) Quanto ao resultado, nos crimes materiais ele é:",
+            opcoes: [
+                "A) dispensável",
+                "B) normativo",
+                "C) naturalístico (modificação do mundo exterior)",
+                "D) jurídico"
+            ],
+            resposta: "✅ Resposta: C. Crimes materiais exigem resultado naturalístico (ex.: homicídio exige a morte)."
+        },
+        {
+            pergunta: "15. (Prado) A tipicidade material significa que:",
+            opcoes: [
+                "A) a conduta se subsum perfeitamente à norma",
+                "B) deve haver ofensa de relevância ao bem jurídico",
+                "C) o fato é sempre punível",
+                "D) a lei é anterior ao fato"
+            ],
+            resposta: "✅ Resposta: B. Além da subsunção formal, exige-se lesão ou perigo concreto ao bem jurídico (princípio da ofensividade)."
         }
     ];
 
-    // Variáveis de estado
-    let perguntaAtual = 0;
-    const respostasUsuario = new Array(perguntas.length).fill(null); // null = não respondida
+    let currentIndex = 0; // 0-based
 
-    // Elementos DOM
-    const perguntaNumEl = document.getElementById('perguntaNum');
-    const progressFill = document.getElementById('progressFill');
-    const perguntaTextoEl = document.getElementById('perguntaTexto');
-    const alternativasContainer = document.getElementById('alternativasContainer');
-    const btnAnterior = document.getElementById('btnAnterior');
-    const btnProximo = document.getElementById('btnProximo');
-    const btnFinalizar = document.getElementById('btnFinalizar');
-    const quizContainer = document.getElementById('quizContainer');
-    const resultadoFinalDiv = document.getElementById('resultadoFinal');
-    const acertosNum = document.getElementById('acertosNum');
-    const acertosTexto = document.getElementById('acertosTexto');
-    const percentualEl = document.getElementById('percentual');
-    const reiniciarBtn = document.getElementById('reiniciarQuiz');
+    function renderQuestao(index) {
+        const q = questoes[index];
+        const container = document.getElementById('questaoAtual');
+        // Atualiza contador
+        document.getElementById('contador').innerText = `${index+1}/${questoes.length}`;
 
-    function atualizarInterface() {
-        // Atualiza número e barra de progresso
-        perguntaNumEl.innerText = `${perguntaAtual+1}/${perguntas.length}`;
-        const progresso = ((perguntaAtual+1) / perguntas.length) * 100;
-        progressFill.style.width = `${progresso}%`;
-
-        // Carrega pergunta
-        const p = perguntas[perguntaAtual];
-        perguntaTextoEl.innerText = p.pergunta;
-
-        // Monta alternativas
-        let html = '';
-        p.opcoes.forEach((opcao, idx) => {
-            const selecionada = (respostasUsuario[perguntaAtual] === idx) ? 'selecionada' : '';
-            html += `<div class="alternativa ${selecionada}" data-index="${idx}">${opcao}</div>`;
+        // Cria HTML da questão com botão de gabarito
+        let html = `
+            <div class="q-header">
+                <span class="q-numero">Questão ${index+1}</span>
+            </div>
+            <div class="q-texto">${q.pergunta}</div>
+            <div class="q-opt">
+        `;
+        q.opcoes.forEach(op => {
+            html += `<div class="opcao">${op}</div>`;
         });
-        alternativasContainer.innerHTML = html;
+        html += `
+            </div>
+            <button class="btn-gabarito" onclick="this.nextElementSibling.style.display='block'; this.style.display='none';">🔓 Ver gabarito</button>
+            <div class="gabarito" style="display: none;">${q.resposta}</div>
+        `;
+        container.innerHTML = html;
+    }
 
-        // Adiciona evento de clique nas alternativas
-        document.querySelectorAll('.alternativa').forEach(alt => {
-            alt.addEventListener('click', function(e) {
-                const idx = parseInt(this.dataset.index);
-                // Marcar resposta
-                respostasUsuario[perguntaAtual] = idx;
-                // Remove seleção das outras e adiciona nesta
-                document.querySelectorAll('.alternativa').forEach(a => a.classList.remove('selecionada'));
-                this.classList.add('selecionada');
-            });
-        });
-
-        // Habilita/desabilita botões de navegação
-        btnAnterior.disabled = (perguntaAtual === 0);
-        // Mostra botão finalizar apenas na última pergunta
-        if (perguntaAtual === perguntas.length - 1) {
-            btnProximo.style.display = 'none';
-            btnFinalizar.style.display = 'block';
+    // Navegação
+    document.getElementById('btnAnterior').addEventListener('click', function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            renderQuestao(currentIndex);
         } else {
-            btnProximo.style.display = 'block';
-            btnFinalizar.style.display = 'none';
+            alert('Você já está na primeira questão.');
         }
-    }
+    });
 
-    function irParaProxima() {
-        if (perguntaAtual < perguntas.length - 1) {
-            perguntaAtual++;
-            atualizarInterface();
+    document.getElementById('btnProximo').addEventListener('click', function() {
+        if (currentIndex < questoes.length - 1) {
+            currentIndex++;
+            renderQuestao(currentIndex);
+        } else {
+            alert('Você concluiu todas as questões!');
         }
-    }
+    });
 
-    function irParaAnterior() {
-        if (perguntaAtual > 0) {
-            perguntaAtual--;
-            atualizarInterface();
-        }
-    }
-
-    function finalizarQuiz() {
-        // Calcula acertos
-        let acertos = 0;
-        for (let i = 0; i < perguntas.length; i++) {
-            if (respostasUsuario[i] === perguntas[i].resposta) {
-                acertos++;
-            }
-        }
-        const percentual = ((acertos / perguntas.length) * 100).toFixed(1);
-        acertosNum.innerText = acertos;
-        acertosTexto.innerText = `de ${perguntas.length} acertos`;
-        percentualEl.innerText = `${percentual}%`;
-
-        // Esconde quiz, mostra resultado
-        quizContainer.classList.add('escondido');
-        resultadoFinalDiv.classList.remove('escondido');
-    }
-
-    function reiniciarQuiz() {
-        perguntaAtual = 0;
-        // Limpa respostas
-        for (let i = 0; i < perguntas.length; i++) respostasUsuario[i] = null;
-        // Mostra quiz, esconde resultado
-        quizContainer.classList.remove('escondido');
-        resultadoFinalDiv.classList.add('escondido');
-        atualizarInterface();
-    }
-
-    // Event listeners
-    btnProximo.addEventListener('click', irParaProxima);
-    btnAnterior.addEventListener('click', irParaAnterior);
-    btnFinalizar.addEventListener('click', finalizarQuiz);
-    reiniciarBtn.addEventListener('click', reiniciarQuiz);
-
-    // Inicializa
-    atualizarInterface();
+    // Renderiza a primeira questão ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+        renderQuestao(0);
+    });
 </script>
 </body>
 </html>
